@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography } from '@strapi/design-system';
 import { Field } from '@strapi/design-system';
-import { useField } from '@strapi/strapi/admin'; ';'
+import { useField } from '@strapi/strapi/admin';
 
 interface InputProps {
   value: number;

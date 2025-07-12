@@ -9,7 +9,7 @@ export default {
     app.customFields.register({
       name: FIELD_ID,
       pluginId: PLUGIN_ID,
-      type: 'json', // the field will be stored as a json
+      type: 'integer', // the field will be stored as a json
       intlLabel: {
         id: PLUGIN_ID + '.' + FIELD_ID + '.label',
         defaultMessage: 'Rating Selector',
@@ -22,6 +22,7 @@ export default {
       default: null,
       isResizable: true,
       icon: PluginIcon,
+      allowedTypes: ['string', 'text', 'integer', 'number'],
       components: {
         Input: async () => import('./components/Input'),
       },
