@@ -22,20 +22,20 @@ const Input: React.FC<InputProps> = ({ hint, labelAction, label, name, required,
         <Field.Label action={labelAction} style={{ marginBottom: '0.5rem' }}>
           {label}
         </Field.Label>
-
         <Box style={{ display: 'flex', width: '100%', gap: '3px', flexWrap: 'wrap', alignItems: 'center' }}>
           {Array.from({ length: attribute.options.max - attribute.options.min + 1 }, (_, i) => i + attribute.options.min).map((num) => (
             <Box
               key={num}
               padding={2}
               borderRadius="4px"
+              opacity={props.disabled ? 0.5 : 1}
               background={field.value === num ? 'primary600' : 'neutral100'}
               color={'white'}
               borderColor={field.value === num ? 'primary600' : 'neutral300'}
               borderWidth="1px"
               borderStyle="solid"
-              cursor="pointer"
-              onClick={() => setValue(num)}
+              cursor={props.disabled ? "not-allowed" : "pointer"}
+              onClick={props.disabled ? undefined : () => setValue(num)}
               textAlign="center"
               minWidth="40px"
             >
