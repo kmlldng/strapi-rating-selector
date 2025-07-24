@@ -10,7 +10,7 @@ interface InputProps {
 
 
 const Input: React.FC<InputProps> = ({ hint, labelAction, label, name, required, attribute, ...props }) => {
-  const { value, initialValue, onChange, error, rawError } = useField(name)
+  const { value, initialValue, onChange } = useField(name)
   const [localError, setLocalError] = useState<string | undefined>(undefined);
   // Required field validation
   useEffect(() => {
@@ -25,12 +25,12 @@ const Input: React.FC<InputProps> = ({ hint, labelAction, label, name, required,
   }, [value, required]);
 
   return (
-    <Field.Root {...props} error={localError || error || rawError} name={name} id={name} hint={hint} required={required}>
+    <Field.Root {...props} error={localError} name={name} id={name} hint={hint} required={required}>
       <Box>
         <Field.Label action={labelAction} style={{ marginBottom: '0.5rem' }} required={required}>
           {label}
         </Field.Label>
-        <Box style={{ display: 'flex', width: '100%', gap: '3px', marginBottom: error || rawError ? '0' : '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+        <Box style={{ display: 'flex', width: '100%', gap: '3px', marginBottom: localError ? '0' : '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
           {Array.from({ length: attribute.options.max - attribute.options.min + 1 }, (_, i) => i + attribute.options.min).map((num) => (
             <Box
               key={num}
