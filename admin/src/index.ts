@@ -69,6 +69,18 @@ export default {
                 required: true,
                 defaultValue: 10,
               },
+              {
+                name: 'required',
+                type: 'checkbox',
+                intlLabel: {
+                  id: 'global.required',
+                  defaultMessage: 'Required',
+                },
+                description: {
+                  id: 'global.required.description',
+                  defaultMessage: 'Make this field required',
+                },
+              },
               // {
               //   name: 'options.label',
               //   type: 'text',
