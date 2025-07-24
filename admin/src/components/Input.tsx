@@ -10,7 +10,7 @@ interface InputProps {
 
 
 const Input: React.FC<InputProps> = ({ hint, labelAction, label, name, required, attribute, ...props }) => {
-  const { value, initialValue, onChange } = useField(name)
+  const { value, onChange } = useField(name)
   const [localError, setLocalError] = useState<string | undefined>(undefined);
   // Required field validation
   useEffect(() => {
@@ -30,16 +30,16 @@ const Input: React.FC<InputProps> = ({ hint, labelAction, label, name, required,
         <Field.Label action={labelAction} style={{ marginBottom: '0.5rem' }} required={required}>
           {label}
         </Field.Label>
-        <Box style={{ display: 'flex', width: '100%', gap: '3px', marginBottom: localError ? '0' : '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+        <Box style={{ display: 'flex', width: '100%', gap: '3px', marginBottom: localError ? '1rem' : '0', flexWrap: 'wrap', alignItems: 'center' }}>
           {Array.from({ length: attribute.options.max - attribute.options.min + 1 }, (_, i) => i + attribute.options.min).map((num) => (
             <Box
               key={num}
               padding={2}
               borderRadius="4px"
               opacity={props.disabled ? 0.5 : 1}
-              background={value === num || num === initialValue ? 'primary600' : 'neutral100'}
+              background={value === num ? 'primary600' : 'neutral100'}
               color={'white'}
-              borderColor={value === num || num === initialValue ? 'primary600' : 'neutral300'}
+              borderColor={value === num ? 'primary600' : 'neutral300'}
               borderWidth="1px"
               borderStyle="solid"
               cursor={props.disabled ? "not-allowed" : "pointer"}
