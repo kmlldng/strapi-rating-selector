@@ -38,7 +38,7 @@ const Input: React.FC<InputProps> = ({ hint, labelAction, label, name, required,
               borderRadius="4px"
               opacity={props.disabled ? 0.5 : 1}
               background={value === num ? 'primary600' : 'neutral100'}
-              color={'white'}
+              color={value === num ? 'white' : 'inherit'}
               borderColor={value === num ? 'primary600' : 'neutral300'}
               borderWidth="1px"
               borderStyle="solid"
